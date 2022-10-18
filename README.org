@@ -1,0 +1,25 @@
+#+TITLE: 324, a Clock Synchronicity Tester
+#+AUTHOR: Sunny
+#+DATE: 10/17/2022
+
+* Overview
+The code also contains some light notes about the program. This is a very simple and short toy program written because I see certain numbers repeated on clocks very frequently. I know the phenomenon is pretty common. These numbers have followed me for years. It started with seeing a clock displaying ~03:24 AM~ during a poignant experience some seven or eight years ago or so. To this day, I commonly see that same time, along with ~04:23~ and ~04:32~. Those three are the most common for me, though I see other orders less frequently.
+
+I wrote this program to see how many times those numbers can appear on a clock. I wrote it using Clojure, which I've began to explore. It's a fabulous language.
+
+* Code
+Just to give a quick rundown of the code:
+- We use strings for the times to make it easy to query for specific digits.
+- The digits for the hours and minutes are created separately using simple ranges.
+  - We create a function to pad single digit minutes and hours with a single prefix ~0~.
+- We make a cartesian product with all the hour and minute combinations, ie. all possible times.
+- We map over the times, looking for the times that match the digits.
+- Then we format the matches to look like actual clock times.
+
+Note that two sets are included here, one with and one without the digits ~"234"~. I don't particularly care about that ordering.
+
+* Usage
+The displays resulting from running the code are included as comments within the file. If you want to play with it, simply download ~core.clj~ or copy and paste it into a REPL. If you change the vector ~target-digits~, you may search for whichever combinations you like.
+
+* Possiblities
+It should be possible to create this into a Babashka script, allowing entry of query digits from the command line to search for with relative ease.
